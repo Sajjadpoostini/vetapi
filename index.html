@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" crossorigin href="./assets/index-RNpR6Wky.css">
+  </head>
+  <body>
+    <div class="menu">
+      <nav>
+        <ul>
+          <li>
+            <a href="#">home</a>
+          </li>
+          <li>
+            <a href="#">gallery</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+          <li>
+            <a href="#">about</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="silder">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./assets/jordan-shoes-first-DZfhxhOU.jpg" alt="jordan-shoes" />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="./assets/jordan-shoes-4k-emah46cupvrj8lfc-2nRy_Kqh.jpg"
+              alt="jordan-shoes"
+            />
+          </div>
+          <div class="swiper-slide">
+            <img src="./assets/jordan-shoes-bl-BfnXOqZc.jpg" alt="jordan-shoes" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./assets/jordan-shoes-%20b-BrQydYO9.jpg" alt="jordan-shoes" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./assets/jordan-shoes-y-DG0GdL5X.jpg" alt="jordan-shoes" />
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <div class="products" id="products"></div>
+
+    <script src="./node_modules/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+    <script>
+      async function allData() {
+        let product = "";
+        let data = await fetch("https://fakestoreapi.com/products");
+        let res = await data.json();
+        product = res.map((elem) => {
+          return `<div class="product">
+          <h1>${elem.titel}</h1>  
+          <img src="${elem.image}" alt="">
+          <div class="para">${elem.description}</div>
+          <div> price : ${elem.price}</div>
+          <div class="rating">
+              <div class="rate">rate: ${elem.rating.rate}</div>
+              <div class="count">count: ${elem.rating.count}</div>
+          </div>
+        </div>`;
+        });
+        document.querySelector("#products").insertAdjacentHTML("afterbegin",product.join(""))
+      }
+      allData();
+    </script>
+  </body>
+</html>

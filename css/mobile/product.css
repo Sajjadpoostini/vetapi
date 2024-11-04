@@ -1,0 +1,44 @@
+div.products {
+  width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #2b2b2b;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+div.products > div.product {
+  height: 650px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  background-color: gray;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px black;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+}
+div.products > div.product > h1 {
+  width: 100%;
+  color: white;
+  text-transform: capitalize;
+  text-align: center;
+}
+div.products > div.product > img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+div.products > div.product div.rating {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
